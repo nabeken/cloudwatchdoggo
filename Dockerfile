@@ -7,7 +7,7 @@ WORKDIR /go/src
 COPY . ./
 
 RUN --mount=type=cache,target=/root/.cache \
-  go build -v -o /var/task/cloudwatchdoggo
+  go build -v -o ../bin/cloudwatchdoggo
 
 FROM public.ecr.aws/lambda/go:1
 
