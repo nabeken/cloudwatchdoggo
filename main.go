@@ -6,8 +6,10 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 	"time"
 
+	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/cloudwatch"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
@@ -16,6 +18,14 @@ import (
 )
 
 var barkInterval = 1 * time.Minute
+
+type lambdaHandler struct {
+	doggo *doggo.Doggo
+}
+
+func (h *lambdaHandler) handleLambda() error {
+	return realMain(h.doggo)
+}
 
 func realMain(d *doggo.Doggo) error {
 	alarms, err := d.ListAlarmsInAlarm()
@@ -53,6 +63,29 @@ func realMain(d *doggo.Doggo) error {
 	return nil
 }
 
+func LambdaMain() error {
+	log.Print("Launching AWS Lambda handler...")
+
+	cfg, err := config.LoadDefaultConfig(context.TODO())
+	if err != nil {
+		return fmt.Errorf("loading SDK config, %w", err)
+	}
+
+	d := &doggo.Doggo{
+		CloudWatch: cloudwatch.NewFromConfig(cfg),
+		DynamoDB:   dynamodb.NewFromConfig(cfg),
+		SNS:        sns.NewFromConfig(cfg),
+		TableName:  os.Getenv("DOGGO_TABLE_NAME"),
+		BarkSNSArn: os.Getenv("BARK_SNS_ARN"),
+	}
+
+	h := &lambdaHandler{doggo: d}
+
+	lambda.Start(h.handleLambda)
+
+	return nil
+}
+
 func Main(args []string) error {
 	f := flag.NewFlagSet(args[0], flag.ExitOnError)
 
@@ -85,7 +118,13 @@ func Main(args []string) error {
 }
 
 func main() {
-	if err := Main(os.Args); err != nil {
-		log.Fatalf("FATAL: %v", err)
+	if strings.HasPrefix(os.Getenv("AWS_EXECUTION_ENV"), "AWS_Lambda") {
+		if err := LambdaMain(); err != nil {
+			log.Fatalf("FATAL: %v", err)
+		}
+	} else {
+		if err := Main(os.Args); err != nil {
+			log.Fatalf("FATAL: %v", err)
+		}
 	}
 }
