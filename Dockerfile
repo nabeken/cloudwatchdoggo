@@ -4,7 +4,7 @@ FROM golang:1.17 as build-image
 ENV GOMODCACHE /root/.cache/gomod
 
 WORKDIR /go/src
-COPY go.mod go.sum main.go ./
+COPY . ./
 
 RUN --mount=type=cache,target=/root/.cache \
   go build -v -o ../bin/watchdoggo
