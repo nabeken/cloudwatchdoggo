@@ -51,6 +51,8 @@ As for the command-line application and the lambda function, the configuration i
 
 As for using the dogggo directly, please read the document in `doggo` package.
 
+Other than that, please feed periodical events to the doggo. EventBridge's scheduled event will be a choice.
+
 ## Example IAM policy for the lambda function
 
 You should attach `arn:aws:iam::aws:policy/AWSLambdaExecute` and the following policy for IAM role that the lambda function will use.
