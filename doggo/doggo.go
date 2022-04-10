@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"strings"
 	"time"
 
@@ -18,13 +19,68 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/sns"
 )
 
+// Main is an entry point for cloudwatchdoggo.
+func Main(d *Doggo) error {
+	alarms, err := d.ListAlarmsInAlarm()
+	if err != nil {
+		return fmt.Errorf("listing alarms: %w", err)
+	}
+
+	now := time.Now()
+
+	if d.DebugOn {
+		d.debugLogf("will bark after: %v", now.Add(-d.BarkInterval))
+	}
+
+	for _, alarm := range alarms {
+		item, err := d.GetLatestBarkStatus(alarm)
+
+		d.debugLogf("last barked at: %v, err: %v", item.LastBarkedAt, err)
+
+		if item.ShouldBark(now.Add(-d.BarkInterval)) {
+			d.debugLogf("BARK BARK BARK: %v", item)
+
+			// BARK
+			if err := d.Bark(alarm); err != nil {
+				log.Printf("ERROR: unable to bark: %v", err)
+				continue
+			}
+
+			item.barked()
+
+			if err := d.updateLastBarkStatus(item); err != nil {
+				log.Printf("ERROR: unable to save the state: %v", err)
+			}
+		} else {
+			d.debugLogf("NO BARK PLEASE: %v", item)
+		}
+	}
+
+	return nil
+}
+
 type Doggo struct {
+	SNS        *sns.Client
 	CloudWatch *cloudwatch.Client
 	DynamoDB   *dynamodb.Client
-	SNS        *sns.Client
-	TableName  string
 
+	// DynamoDB Table to store the state
+	TableName string
+
+	// Amazon SNS Topic used with AWS Chatbot
 	BarkSNSArn string
+
+	// An interval to bark again since the last bark
+	BarkInterval time.Duration
+
+	// If true, it will print debug logs.
+	DebugOn bool
+}
+
+func (d *Doggo) debugLogf(format string, v ...interface{}) {
+	if d.DebugOn {
+		log.Printf("DEBUG: "+format, v...)
+	}
 }
 
 func (d *Doggo) ListAlarmsInAlarm() ([]types.MetricAlarm, error) {
@@ -92,7 +148,7 @@ func (i BarkItem) ShouldBark(willBarkAfter time.Time) bool {
 	return willBarkAfter.After(i.LastBarkedAt)
 }
 
-func (i *BarkItem) Barked() {
+func (i *BarkItem) barked() {
 	i.LastBarkedAt = time.Now()
 	i.TTL = i.LastBarkedAt.Add(24 * time.Hour).Unix()
 }
@@ -129,10 +185,10 @@ func (d *Doggo) GetLatestBarkStatus(alarm types.MetricAlarm) (*BarkItem, error) 
 	return item, err
 }
 
-// UpdateLastBarkStatus updates an item in DynamoDB.
+// updateLastBarkStatus updates an item in DynamoDB.
 // If an operation is conflicted, there is no need to bark then it will return false.
 // If the operation succeeds, the bark is requested, then it will return true.
-func (d *Doggo) UpdateLastBarkStatus(item *BarkItem) error {
+func (d *Doggo) updateLastBarkStatus(item *BarkItem) error {
 	key, err := attributevalue.MarshalMap(item.BarkItemKey)
 	if err != nil {
 		return fmt.Errorf("marshaling into DynamoDB item: %w", err)

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -17,50 +18,35 @@ import (
 	"github.com/nabeken/cloudwatchdoggo/doggo"
 )
 
-var barkInterval = 1 * time.Minute
+func mustFetchEnv(n string) string {
+	v := os.Getenv(n)
+	if v == "" {
+		panic(fmt.Sprintf("environment variable %s must be set", n))
+	}
+
+	return v
+}
+
+func mustParseDuration(dur string) time.Duration {
+	d, err := time.ParseDuration(dur)
+	if err != nil {
+		panic(err)
+	}
+
+	return d
+}
+
+func parseBool(v string) bool {
+	b, _ := strconv.ParseBool(v)
+	return b
+}
 
 type lambdaHandler struct {
 	doggo *doggo.Doggo
 }
 
 func (h *lambdaHandler) handleLambda() error {
-	return realMain(h.doggo)
-}
-
-func realMain(d *doggo.Doggo) error {
-	alarms, err := d.ListAlarmsInAlarm()
-	if err != nil {
-		return fmt.Errorf("listing alarms: %w", err)
-	}
-
-	now := time.Now()
-
-	log.Printf("INFO: will bark after: %v\n", now.Add(-barkInterval))
-
-	for _, alarm := range alarms {
-		item, err := d.GetLatestBarkStatus(alarm)
-		log.Printf("INFO: last barked at: %v, err: %v\n", item.LastBarkedAt, err)
-
-		if item.ShouldBark(now.Add(-barkInterval)) {
-			log.Println("INFO: BARK BARK BARK:", item)
-
-			// BARK
-			if err := d.Bark(alarm); err != nil {
-				log.Printf("ERROR: unable to bark: %v", err)
-				continue
-			}
-
-			item.Barked()
-
-			if err := d.UpdateLastBarkStatus(item); err != nil {
-				log.Printf("ERROR: unable to save the state: %v", err)
-			}
-		} else {
-			log.Printf("INFO: NO BARK PLEASE: %v", item)
-		}
-	}
-
-	return nil
+	return doggo.Main(h.doggo)
 }
 
 func LambdaMain() error {
@@ -75,8 +61,12 @@ func LambdaMain() error {
 		CloudWatch: cloudwatch.NewFromConfig(cfg),
 		DynamoDB:   dynamodb.NewFromConfig(cfg),
 		SNS:        sns.NewFromConfig(cfg),
-		TableName:  os.Getenv("DOGGO_TABLE_NAME"),
-		BarkSNSArn: os.Getenv("BARK_SNS_ARN"),
+
+		TableName:    mustFetchEnv("DOGGO_TABLE_NAME"),
+		BarkSNSArn:   mustFetchEnv("DOGGO_BARK_SNS_ARN"),
+		BarkInterval: mustParseDuration(mustFetchEnv("DOGGO_BARK_INTERVAL")),
+
+		DebugOn: parseBool(os.Getenv("DOGGO_DEBUG_ON")),
 	}
 
 	h := &lambdaHandler{doggo: d}
@@ -102,6 +92,8 @@ func Main(args []string) error {
 
 	f.StringVar(&d.TableName, "table", "", "specify a name of DynamoDB table to store the bark state")
 	f.StringVar(&d.BarkSNSArn, "sns-arn", "", "specify a ARN of SNS topic to bark")
+	f.BoolVar(&d.DebugOn, "debug", false, "enable the debug log")
+	f.DurationVar(&d.BarkInterval, "bark-interval", time.Minute, "an interval to bark again since the last bark")
 
 	if err := f.Parse(args[1:]); err != nil {
 		return err
@@ -114,7 +106,7 @@ func Main(args []string) error {
 		return fmt.Errorf("no ARN of SNS topic")
 	}
 
-	return realMain(d)
+	return doggo.Main(d)
 }
 
 func main() {
