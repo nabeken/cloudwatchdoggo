@@ -10,7 +10,20 @@ You can replicate [the Docker container image](https://github.com/nabeken/cloudw
 
 **As a standalone command-line application**:
 
-TBD
+```sh
+go install github.com/nabeken/cloudwatchdoggo@latest
+cloudwatchdoggo -h
+
+Usage of cloudwatchdoggo:
+  -bark-interval duration
+    	an interval to bark again since the last bark (default 1m0s)
+  -debug
+    	enable the debug log
+  -sns-arn string
+    	specify a ARN of SNS topic to bark
+  -table string
+    	specify a name of DynamoDB table to store the bark state
+```
 
 **As a part of your application**:
 
