@@ -38,6 +38,32 @@ As for the command-line application and the lambda function, the configuration i
 
 As for using the dogggo directly, please read the document in `doggo` package.
 
+## Example IAM policy for the lambda function
+
+You should attach `arn:aws:iam::aws:policy/AWSLambdaExecute` and the following policy for IAM role that the lambda function will use.
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "sns:Publish",
+        "dynamodb:PutItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:GetItem",
+        "dynamodb:UpdateItem"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:*:<account-id>:table/<table-name>",
+        "arn:aws:sns:*:<account-id>:<topic>"
+      ]
+    }
+  ]
+}
+```
+
 ---
 
 What is [your favorite doggo](https://www.youtube.com/watch?v=sowESlcktC8) BTW?
