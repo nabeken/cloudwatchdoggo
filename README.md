@@ -48,6 +48,12 @@ You should attach `arn:aws:iam::aws:policy/AWSLambdaExecute` and the following p
     {
       "Sid": "VisualEditor0",
       "Effect": "Allow",
+      "Action": "cloudwatch:DescribeAlarms",
+      "Resource": "*"
+    },
+    {
+      "Sid": "VisualEditor1",
+      "Effect": "Allow",
       "Action": [
         "sns:Publish",
         "dynamodb:PutItem",
@@ -56,8 +62,8 @@ You should attach `arn:aws:iam::aws:policy/AWSLambdaExecute` and the following p
         "dynamodb:UpdateItem"
       ],
       "Resource": [
-        "arn:aws:dynamodb:*:<account-id>:table/<table-name>",
-        "arn:aws:sns:*:<account-id>:<topic>"
+        "arn:aws:sns:*:468733716708:chatbot",
+        "arn:aws:dynamodb:*:468733716708:table/cloudwatchdoggo2"
       ]
     }
   ]
