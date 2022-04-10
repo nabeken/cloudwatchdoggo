@@ -14,13 +14,13 @@ TBD
 
 **As a part of your application**:
 
-If you want to integrate the doggo into your existing command line application as a subcommand, you can implement an entry point.
+If you want to integrate the doggo into your existing command line application as a subcommand, you can implement an entry point with the `doggo` package.
 
 Please read the documentation how to initialize and the doggo.
 
 ## Requirements
 
-AWS Chatbot configuration is required because The doggo will send CloudWatch Alarm through the AWS Chatbot (SNS).
+AWS Chatbot configuration is required because the doggo will send CloudWatch Alarm through the AWS Chatbot (SNS).
 
 The doggo will not bark again if the last bark is within an specified interval. To record the state, it will use DynamoDB table with the following schema.
 
