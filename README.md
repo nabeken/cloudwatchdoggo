@@ -22,7 +22,7 @@ Please read the documentation how to initialize and the doggo.
 
 AWS Chatbot configuration is required because the doggo will send CloudWatch Alarm through the AWS Chatbot (SNS).
 
-The doggo will not bark again if the last bark is within an specified interval. To record the state, it will use DynamoDB table with the following schema.
+The doggo will only bark again if the last bark time passes a specified interval. To record the state, it will use DynamoDB table with the following schema.
 
 - **Partition Key**: `alarm_id (String)`
 - **Sort key**: `state_updated_at (Number)`
