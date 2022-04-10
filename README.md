@@ -75,8 +75,8 @@ You should attach `arn:aws:iam::aws:policy/AWSLambdaExecute` and the following p
         "dynamodb:UpdateItem"
       ],
       "Resource": [
-        "arn:aws:sns:*:468733716708:chatbot",
-        "arn:aws:dynamodb:*:468733716708:table/cloudwatchdoggo2"
+        "arn:aws:sns:*:<account-id>:<topic>",
+        "arn:aws:dynamodb:*:<account-id>:table/<table name>"
       ]
     }
   ]
