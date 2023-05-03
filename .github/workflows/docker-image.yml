@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ main, update-tidy ]
+    branches: [ main ]
 
 env:
   DOCKER_BUILDKIT: '1'
