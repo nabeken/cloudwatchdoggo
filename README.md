@@ -39,6 +39,8 @@ The doggo will only bark again if the last bark time passes a specified interval
 
 - **Partition Key**: `alarm_id (String)`
 - **Sort key**: `state_updated_at (Number)`
+- **TTL**: `ttl (Number)`
+  - TTL will be set for 24 hours
 
 ## Configuration
 
