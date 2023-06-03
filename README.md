@@ -6,7 +6,8 @@
 
 **As the lambda function**:
 
-You can replicate [the Docker container image](https://github.com/nabeken/cloudwatchdoggo/pkgs/container/cloudwatchdoggo) to your ECR repository and deploy it as the lambda function with Container Image Support.
+- You can replicate [the Docker container image](https://github.com/nabeken/cloudwatchdoggo/pkgs/container/cloudwatchdoggo) to your ECR repository and deploy it as the lambda function with Container Image Support.
+- You can also provision the function with [the terraform module](https://registry.terraform.io/modules/nabeken/cloudwatchdoggo/aws/latest).
 
 **As a standalone command-line application**:
 
