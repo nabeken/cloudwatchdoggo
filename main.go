@@ -7,7 +7,6 @@ import (
 	"log"
 	"os"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/aws/aws-lambda-go/lambda"
@@ -110,13 +109,13 @@ func Main(args []string) error {
 }
 
 func main() {
-	if strings.HasPrefix(os.Getenv("AWS_EXECUTION_ENV"), "AWS_Lambda") {
+	if os.Getenv("LAMBDA_TASK_ROOT") != "" {
 		if err := LambdaMain(); err != nil {
-			log.Fatalf("FATAL: %v", err)
+			log.Fatalf("LambdaMain: FATAL: %v", err)
 		}
 	} else {
 		if err := Main(os.Args); err != nil {
-			log.Fatalf("FATAL: %v", err)
+			log.Fatalf("Main: FATAL: %v", err)
 		}
 	}
 }
