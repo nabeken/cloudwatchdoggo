@@ -4,7 +4,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.18.33
 	github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue v1.10.36
 	github.com/aws/aws-sdk-go-v2/feature/dynamodb/expression v1.4.63
-	github.com/aws/aws-sdk-go-v2/service/cloudwatch v1.27.2
+	github.com/aws/aws-sdk-go-v2/service/cloudwatch v1.27.3
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.21.2
 	github.com/aws/aws-sdk-go-v2/service/sns v1.21.2
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
