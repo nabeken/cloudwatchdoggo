@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.8
+# syntax=docker/dockerfile:1.9
 FROM golang:1.22 as build-image
 
 ENV GOMODCACHE /root/.cache/gomod
