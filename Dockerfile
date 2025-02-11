@@ -6,6 +6,8 @@ ENV GOMODCACHE=/root/.cache/gomod
 WORKDIR /go/src
 COPY . ./
 
+RUN go env
+
 RUN --mount=type=cache,target=/root/.cache \
   go build -v -o ../bin/cloudwatchdoggo
 
