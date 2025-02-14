@@ -2,10 +2,10 @@ require (
 	github.com/aws/aws-lambda-go v1.47.0
 	github.com/aws/aws-sdk-go-v2 v1.36.1
 	github.com/aws/aws-sdk-go-v2/config v1.29.6
-	github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue v1.18.3
-	github.com/aws/aws-sdk-go-v2/feature/dynamodb/expression v1.7.69
+	github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue v1.18.4
+	github.com/aws/aws-sdk-go-v2/feature/dynamodb/expression v1.7.70
 	github.com/aws/aws-sdk-go-v2/service/cloudwatch v1.43.14
-	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.40.0
+	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.40.1
 	github.com/aws/aws-sdk-go-v2/service/sns v1.33.19
 )
 
