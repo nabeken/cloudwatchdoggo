@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.14
-FROM golang:1.23 AS build-image
+FROM golang:1.24 AS build-image
 
 ENV GOMODCACHE=/root/.cache/mod
 
