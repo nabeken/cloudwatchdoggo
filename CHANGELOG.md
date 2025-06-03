@@ -1,5 +1,44 @@
 # Changelog
 
+## [0.0.5](https://github.com/nabeken/cloudwatchdoggo/compare/v0.0.4...v0.0.5) (2025-06-03)
+
+
+### Bug Fixes
+
+* **deps:** update aws-sdk-go-v2 monorepo ([#118](https://github.com/nabeken/cloudwatchdoggo/issues/118)) ([cf2f500](https://github.com/nabeken/cloudwatchdoggo/commit/cf2f50065345f94ccedfc2c872e19c76bef3cf26))
+* **deps:** update aws-sdk-go-v2 monorepo ([#123](https://github.com/nabeken/cloudwatchdoggo/issues/123)) ([05eaec9](https://github.com/nabeken/cloudwatchdoggo/commit/05eaec9921fe4615acb6c87b54af3dd6b99ce00d))
+* **deps:** update aws-sdk-go-v2 monorepo ([#126](https://github.com/nabeken/cloudwatchdoggo/issues/126)) ([8be664f](https://github.com/nabeken/cloudwatchdoggo/commit/8be664f6a16eed0c9b8b32364526d5709e2c0ce8))
+* **deps:** update aws-sdk-go-v2 monorepo ([#127](https://github.com/nabeken/cloudwatchdoggo/issues/127)) ([af0c0e6](https://github.com/nabeken/cloudwatchdoggo/commit/af0c0e6bb82b95da19b2a2128c413bd90440c4ff))
+* **deps:** update aws-sdk-go-v2 monorepo ([#129](https://github.com/nabeken/cloudwatchdoggo/issues/129)) ([7dd19fc](https://github.com/nabeken/cloudwatchdoggo/commit/7dd19fc85eb697301a62cdd046a0e9501977369c))
+* **deps:** update aws-sdk-go-v2 monorepo ([#134](https://github.com/nabeken/cloudwatchdoggo/issues/134)) ([0953054](https://github.com/nabeken/cloudwatchdoggo/commit/095305487f88075354f6f699ec0ebd5a1e923a1a))
+* **deps:** update aws-sdk-go-v2 monorepo ([#136](https://github.com/nabeken/cloudwatchdoggo/issues/136)) ([771ac73](https://github.com/nabeken/cloudwatchdoggo/commit/771ac732fc64f46de20808961980ecfe9a09aba9))
+* **deps:** update aws-sdk-go-v2 monorepo ([#141](https://github.com/nabeken/cloudwatchdoggo/issues/141)) ([2ac8a59](https://github.com/nabeken/cloudwatchdoggo/commit/2ac8a59fb3b560ada4ea7793b5cfc501e0fe0532))
+* **deps:** update aws-sdk-go-v2 monorepo ([#145](https://github.com/nabeken/cloudwatchdoggo/issues/145)) ([5ec64f5](https://github.com/nabeken/cloudwatchdoggo/commit/5ec64f5082fc3ad1f75c6fa81ef36dbda4698d29))
+* **deps:** update aws-sdk-go-v2 monorepo ([#151](https://github.com/nabeken/cloudwatchdoggo/issues/151)) ([082b35b](https://github.com/nabeken/cloudwatchdoggo/commit/082b35b06b2685d80436802ba15b3826cbf2695a))
+* **deps:** update aws-sdk-go-v2 monorepo ([#153](https://github.com/nabeken/cloudwatchdoggo/issues/153)) ([b15daec](https://github.com/nabeken/cloudwatchdoggo/commit/b15daec4250a7f84ae42f0a2c4cb0dc1e2bfea70))
+* **deps:** update aws-sdk-go-v2 monorepo ([#154](https://github.com/nabeken/cloudwatchdoggo/issues/154)) ([3d85d4d](https://github.com/nabeken/cloudwatchdoggo/commit/3d85d4d9b23dd4682cff16d260dcba21b2ccc058))
+* **deps:** update aws-sdk-go-v2 monorepo ([#156](https://github.com/nabeken/cloudwatchdoggo/issues/156)) ([50396f5](https://github.com/nabeken/cloudwatchdoggo/commit/50396f558a222ccf837abf548f5edd0736c22cff))
+* **deps:** update aws-sdk-go-v2 monorepo ([#160](https://github.com/nabeken/cloudwatchdoggo/issues/160)) ([6e63822](https://github.com/nabeken/cloudwatchdoggo/commit/6e638223bd9cfd977c3069661732a32ba7bc8b63))
+* **deps:** update aws-sdk-go-v2 monorepo ([#164](https://github.com/nabeken/cloudwatchdoggo/issues/164)) ([8a8415d](https://github.com/nabeken/cloudwatchdoggo/commit/8a8415dfb1fbd4bea3585999f9923e93a38f78d9))
+* **deps:** update aws-sdk-go-v2 monorepo ([#166](https://github.com/nabeken/cloudwatchdoggo/issues/166)) ([e8b7c53](https://github.com/nabeken/cloudwatchdoggo/commit/e8b7c5360ea8130e7bd1b198845a6479b0179753))
+* **deps:** update aws-sdk-go-v2 monorepo ([#171](https://github.com/nabeken/cloudwatchdoggo/issues/171)) ([8c576b8](https://github.com/nabeken/cloudwatchdoggo/commit/8c576b8909fec2e29c8cee63933849d01ec90223))
+* **deps:** update aws-sdk-go-v2 monorepo ([#178](https://github.com/nabeken/cloudwatchdoggo/issues/178)) ([10e1c87](https://github.com/nabeken/cloudwatchdoggo/commit/10e1c876215f7e3eab166f570dd9e2b12c5c33eb))
+* **deps:** update aws-sdk-go-v2 monorepo ([#182](https://github.com/nabeken/cloudwatchdoggo/issues/182)) ([2e9f8ee](https://github.com/nabeken/cloudwatchdoggo/commit/2e9f8eecca2e0521c6719df8f058c7184fc20771))
+* **deps:** update aws-sdk-go-v2 monorepo ([#185](https://github.com/nabeken/cloudwatchdoggo/issues/185)) ([dcb0a85](https://github.com/nabeken/cloudwatchdoggo/commit/dcb0a856e8a22582ad2b6ca0199d3d0ba0d61bdd))
+* **deps:** update aws-sdk-go-v2 monorepo ([#190](https://github.com/nabeken/cloudwatchdoggo/issues/190)) ([76a1d97](https://github.com/nabeken/cloudwatchdoggo/commit/76a1d97b1cee651ed0ae261130ca1841079dfd69))
+* **deps:** update aws-sdk-go-v2 monorepo ([#192](https://github.com/nabeken/cloudwatchdoggo/issues/192)) ([b65983c](https://github.com/nabeken/cloudwatchdoggo/commit/b65983c2b409dab3a2c138f1b88c8ce64b8ea730))
+* **deps:** update aws-sdk-go-v2 monorepo ([#202](https://github.com/nabeken/cloudwatchdoggo/issues/202)) ([a17d24a](https://github.com/nabeken/cloudwatchdoggo/commit/a17d24a1fa9cb82075d199d8f7bb717e0f1fea29))
+* **deps:** update aws-sdk-go-v2 monorepo ([#204](https://github.com/nabeken/cloudwatchdoggo/issues/204)) ([8c5383a](https://github.com/nabeken/cloudwatchdoggo/commit/8c5383a13cf131ae3673f458df44526681ce7273))
+* **deps:** update aws-sdk-go-v2 monorepo ([#207](https://github.com/nabeken/cloudwatchdoggo/issues/207)) ([323d941](https://github.com/nabeken/cloudwatchdoggo/commit/323d941273095534d23c7b683bd58aeb63691dcd))
+* **deps:** update aws-sdk-go-v2 monorepo ([#210](https://github.com/nabeken/cloudwatchdoggo/issues/210)) ([6a53cea](https://github.com/nabeken/cloudwatchdoggo/commit/6a53cea47bd61ac977e8183697235ee3321f7a89))
+* **deps:** update module github.com/aws/aws-lambda-go to v1.48.0 ([#203](https://github.com/nabeken/cloudwatchdoggo/issues/203)) ([40192e6](https://github.com/nabeken/cloudwatchdoggo/commit/40192e6ace60b9158978459a0b13c12808345dda))
+* **deps:** update module github.com/aws/aws-lambda-go to v1.49.0 ([#219](https://github.com/nabeken/cloudwatchdoggo/issues/219)) ([2d87afc](https://github.com/nabeken/cloudwatchdoggo/commit/2d87afc41628687ef30923062f945648b00036e0))
+* **deps:** update module github.com/aws/aws-sdk-go-v2/config to v1.28.0 ([#137](https://github.com/nabeken/cloudwatchdoggo/issues/137)) ([e0a9aab](https://github.com/nabeken/cloudwatchdoggo/commit/e0a9aab9d670063dc695401f062381ddde5413b1))
+* **deps:** update module github.com/aws/aws-sdk-go-v2/config to v1.29.12 ([#197](https://github.com/nabeken/cloudwatchdoggo/issues/197)) ([c49a8b8](https://github.com/nabeken/cloudwatchdoggo/commit/c49a8b8583115a4b5f8492602661b9ec069834ee))
+* **deps:** update module github.com/aws/aws-sdk-go-v2/feature/dynamodb/expression to v1.7.75 ([#195](https://github.com/nabeken/cloudwatchdoggo/issues/195)) ([0f6b1ac](https://github.com/nabeken/cloudwatchdoggo/commit/0f6b1ace03f4daa9c74e2e8a29db44e29f778819))
+* **deps:** update module github.com/aws/aws-sdk-go-v2/service/cloudwatch to v1.45.0 ([#217](https://github.com/nabeken/cloudwatchdoggo/issues/217)) ([919d503](https://github.com/nabeken/cloudwatchdoggo/commit/919d503a4667aeea3b2814d3e0dce40e8f1fd6ec))
+* **Dockerfile:** fix syntax error ([#173](https://github.com/nabeken/cloudwatchdoggo/issues/173)) ([7b68db0](https://github.com/nabeken/cloudwatchdoggo/commit/7b68db0738ed9eaa850ffd957ded36e78a4fb8bd))
+
 ## [0.0.4](https://github.com/nabeken/cloudwatchdoggo/compare/v0.0.3...v0.0.4) (2024-08-25)
 
 
