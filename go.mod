@@ -1,5 +1,5 @@
 require (
-	github.com/aws/aws-lambda-go v1.54.0
+	github.com/aws/aws-lambda-go v1.55.0
 	github.com/aws/aws-sdk-go-v2 v1.45.1
 	github.com/aws/aws-sdk-go-v2/config v1.33.1
 	github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue v1.21.1
@@ -28,6 +28,6 @@ require (
 
 module github.com/nabeken/cloudwatchdoggo
 
-go 1.24
+go 1.26
 
 toolchain go1.26.6
