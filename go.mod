@@ -30,4 +30,4 @@ module github.com/nabeken/cloudwatchdoggo
 
 go 1.26
 
-toolchain go1.26.6
+toolchain go1.27.1
