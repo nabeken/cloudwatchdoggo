@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.27
+# syntax=docker/dockerfile:1.29
 FROM golang:1.27 AS build-image
 
 WORKDIR /go/src
